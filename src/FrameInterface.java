@@ -2,6 +2,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 
 class FrameInterface implements ActionListener {
     final int frameWidth = 500;
@@ -18,10 +23,10 @@ class FrameInterface implements ActionListener {
     public FrameInterface(){
         setButtonPlayer1Properties();
         setButtonPlayer2Properties();
-        prepareGUI();
+        prepareStartingGUI();
     }
 
-    public void prepareGUI(){
+    public void prepareStartingGUI(){
         frame.setTitle("Blackjack");
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
@@ -48,19 +53,29 @@ class FrameInterface implements ActionListener {
         return nPlayers;
     }
 
+    public void removeButtons(){
+        frame.remove(buttonPlayer1);
+        frame.remove(buttonPlayer2);
+    }
+
+    public void setGamingGUI() {
+        // GUI where the game happens
+    }
+
     @Override
+    // when one button is pressed:
     public void actionPerformed(ActionEvent e) {
+        // checks which buttons has been pressed
         if("1 player".equals(e.getActionCommand())){
             nPlayers = 1;
-            frame.getContentPane().setBackground(Color.lightGray);
+            frame.getContentPane().setBackground(Color.lightGray);       // Changing Background Color
         }else{
             nPlayers = 2;
-            frame.getContentPane().setBackground(Color.pink);
+            frame.getContentPane().setBackground(Color.pink);        // Changing Background Color
         }
         System.out.println(e.getActionCommand());
+        removeButtons();    // clears actual GUI
 
-        // Changing Background Color
-
-
+        setGamingGUI();     // set the new GUI
     }
 }
