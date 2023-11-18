@@ -60,6 +60,11 @@ class FrameInterface implements ActionListener {
 
     public void setGamingGUI() {
         // GUI where the game happens
+        JTextField jTextField = new JTextField();
+        jTextField.setEditable(false);
+        jTextField.setText("Pesco la carta...");
+        jTextField.setBounds(0, 0, 200, 40);
+        frame.add(jTextField);
     }
 
     @Override
@@ -68,10 +73,10 @@ class FrameInterface implements ActionListener {
         // checks which buttons has been pressed
         if("1 player".equals(e.getActionCommand())){
             nPlayers = 1;
-            frame.getContentPane().setBackground(Color.lightGray);       // Changing Background Color
+            frame.getContentPane().setBackground(Color.white);       // Changing Background Color
         }else{
             nPlayers = 2;
-            frame.getContentPane().setBackground(Color.pink);        // Changing Background Color
+            frame.getContentPane().setBackground(Color.white);        // Changing Background Color
         }
         System.out.println(e.getActionCommand());
         removeButtons();    // clears actual GUI
