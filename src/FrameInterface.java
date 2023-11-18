@@ -21,8 +21,7 @@ class FrameInterface implements ActionListener {
     JButton buttonPlayer1 = new JButton("1 player"); // creating button
 
     public FrameInterface(){
-        setButtonPlayer1Properties();
-        setButtonPlayer2Properties();
+        setButtonsPlayerProperties();
         prepareStartingGUI();
     }
 
@@ -36,15 +35,11 @@ class FrameInterface implements ActionListener {
         frame.add(buttonPlayer2); // adding button in JFrame
     }
 
-    // BUTTON 1
-    public void setButtonPlayer1Properties(){
-        buttonPlayer1.setName("1");
+    public void setButtonsPlayerProperties(){
+        // button 1
         buttonPlayer1.setBounds(frameMargin, 200, buttonWidth, buttonHeight); // x axis, y axis, width, height
         buttonPlayer1.addActionListener(this);//Registering ActionListener to the button
-    }
-
-    // BUTTON 2
-    public void setButtonPlayer2Properties(){
+        // button 2
         buttonPlayer2.setBounds(frameWidth - buttonWidth - frameMargin, 200, buttonWidth, buttonHeight); // x axis, y axis, width, height
         buttonPlayer2.addActionListener(this);//Registering ActionListener to the button
     }
