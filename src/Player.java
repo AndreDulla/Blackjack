@@ -1,7 +1,17 @@
 public class Player{
+    double money;
+    int bet;
+    int points;
+
     public Player() {
-        String carte = "";
-        double soldi = 1000;
-        int puntata = 0;
+        money = 1000;
+        bet = 0;
+        points = 0;
     }
+
+    public void setPoints(int pointsToAdd){
+        points += pointsToAdd;
+    }
+
+    public int getPoints(){ return points; }
 }
