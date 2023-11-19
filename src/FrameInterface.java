@@ -41,9 +41,7 @@ class FrameInterface implements ActionListener {
         buttonPlayer2.addActionListener(this);//Registering ActionListener to the button
     }
 
-    public int getnPlayers() {
-        return nPlayers;
-    }
+    public int getnPlayers() { return nPlayers; }
 
     public void removeButtons(){
         frame.remove(buttonPlayer1);
