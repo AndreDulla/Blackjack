@@ -2,7 +2,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.font.*;
 
 
 class FrameInterface implements ActionListener {
@@ -19,10 +18,13 @@ class FrameInterface implements ActionListener {
 
     public FrameInterface(){
         setButtonsPlayerProperties();
-        prepareStartingGUI();
+        setStartingGUI();
     }
 
-    public void prepareStartingGUI(){
+    /**
+     * Sets the starting GUI of the game
+     */
+    public void setStartingGUI(){
         frame.setTitle("Blackjack");
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
@@ -50,22 +52,29 @@ class FrameInterface implements ActionListener {
         frame.remove(buttonPlayer2);
     }
 
+    /**
+     * Sets the GUI of the actual game
+     */
     public void setGamingGUI() {
         // GUI where the game happens
         Deck deck = new Deck();
 
+        // Player 1 label
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
-        jTextField.setText("Pesco la carta...");
-        jTextField.setBounds(0, 0, 110, 40);
+        jTextField.setFont(new Font("Tahoma", Font. BOLD, 14));
+        String string = "Player 1:";
+        jTextField.setText(string);
+        jTextField.setBounds(frameMargin, frameMargin, 80, 40);
         frame.add(jTextField);
+
 
         printCardValue(deck.getNewCardValue());
     }
 
     public void printCardValue(int casualNumber){
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-        String string = "Ho pescato " + casualNumber;
+        String string = " " + casualNumber;
 
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
@@ -73,7 +82,7 @@ class FrameInterface implements ActionListener {
         jTextField.setFont(font);
 
         int textWidth = 11 * string.length();
-        jTextField.setBounds(130, 0, textWidth, 40);
+        jTextField.setBounds(130, frameMargin, textWidth, 40);
         frame.add(jTextField);
     }
 
