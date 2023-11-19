@@ -32,6 +32,9 @@ class FrameInterface implements ActionListener {
         frame.add(buttonPlayer2); // adding button in JFrame
     }
 
+    /**
+     * Sets properties for each button
+     */
     public void setButtonsPlayerProperties(){
         // button 1
         buttonPlayer1.setBounds(frameMargin, 200, buttonWidth, buttonHeight); // x axis, y axis, width, height
@@ -43,11 +46,17 @@ class FrameInterface implements ActionListener {
 
     public int getnPlayers() { return nPlayers; }
 
+    /**
+     * Removes buttons from the interface
+     */
     public void removeButtons(){
         frame.remove(buttonPlayer1);
         frame.remove(buttonPlayer2);
     }
 
+    /**
+     * Manages all the interface while playing
+     */
     public void setGamingGUI() {
         // GUI where the game happens
         Deck deck = new Deck();
@@ -61,7 +70,11 @@ class FrameInterface implements ActionListener {
         printCardValue(deck.getNewCardValue());
     }
 
-    public void printCardValue(int casualNumber){
+    /**
+     * creates a text field and adds the card value drew
+     * @param cardValue value of the card drew that has to be printed
+     */
+    public void printCardValue(int cardValue){
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
         String string = "Ho pescato " + casualNumber;
 
