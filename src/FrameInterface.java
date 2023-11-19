@@ -78,17 +78,16 @@ class FrameInterface implements ActionListener {
      * creates a text field and adds the card value drew
      * @param cardValue value of the card drew that has to be printed
      */
-    public void printCardValue(int cardValue){
-        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-        String string = "Ho pescato " + cardValue;
+    public void printCardValue(int cardValue, int x, int y){
+        String string = " " + cardValue;
 
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
         jTextField.setText(string);
-        jTextField.setFont(font);
+        jTextField.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 15));
 
         int textWidth = 11 * string.length();
-        jTextField.setBounds(130, 0, textWidth, 40);
+        jTextField.setBounds(x, y, textWidth, 40);
         frame.add(jTextField);
     }
 
