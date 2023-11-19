@@ -60,6 +60,8 @@ class FrameInterface implements ActionListener {
     public void setGamingGUI() {
         // GUI where the game happens
         Deck deck = new Deck();
+        Player player1 = new Player();
+        Player player2 = new Player();
 
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
@@ -67,7 +69,9 @@ class FrameInterface implements ActionListener {
         jTextField.setBounds(0, 0, 110, 40);
         frame.add(jTextField);
 
-        printCardValue(deck.getNewCardValue());
+        int cardValue = deck.getNewCardValue();
+        player1.setPoints(cardValue);
+        printCardValue(cardValue);
     }
 
     /**
@@ -76,7 +80,7 @@ class FrameInterface implements ActionListener {
      */
     public void printCardValue(int cardValue){
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-        String string = "Ho pescato " + casualNumber;
+        String string = "Ho pescato " + cardValue;
 
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
