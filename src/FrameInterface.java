@@ -2,6 +2,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.font.*;
 
 
 class FrameInterface implements ActionListener {
@@ -18,13 +19,10 @@ class FrameInterface implements ActionListener {
 
     public FrameInterface(){
         setButtonsPlayerProperties();
-        setStartingGUI();
+        prepareStartingGUI();
     }
 
-    /**
-     * Sets the starting GUI of the game
-     */
-    public void setStartingGUI(){
+    public void prepareStartingGUI(){
         frame.setTitle("Blackjack");
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
@@ -34,6 +32,9 @@ class FrameInterface implements ActionListener {
         frame.add(buttonPlayer2); // adding button in JFrame
     }
 
+    /**
+     * Sets properties for each button
+     */
     public void setButtonsPlayerProperties(){
         // button 1
         buttonPlayer1.setBounds(frameMargin, 200, buttonWidth, buttonHeight); // x axis, y axis, width, height
@@ -43,38 +44,43 @@ class FrameInterface implements ActionListener {
         buttonPlayer2.addActionListener(this);//Registering ActionListener to the button
     }
 
-    public int getnPlayers() {
-        return nPlayers;
-    }
+    public int getnPlayers() { return nPlayers; }
 
+    /**
+     * Removes buttons from the interface
+     */
     public void removeButtons(){
         frame.remove(buttonPlayer1);
         frame.remove(buttonPlayer2);
     }
 
     /**
-     * Sets the GUI of the actual game
+     * Manages all the interface while playing
      */
     public void setGamingGUI() {
         // GUI where the game happens
         Deck deck = new Deck();
+        Player player1 = new Player();
+        Player player2 = new Player();
 
-        // Player 1 label
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
-        jTextField.setFont(new Font("Tahoma", Font. BOLD, 14));
-        String string = "Player 1:";
-        jTextField.setText(string);
-        jTextField.setBounds(frameMargin, frameMargin, 80, 40);
+        jTextField.setText("Pesco la carta...");
+        jTextField.setBounds(0, 0, 110, 40);
         frame.add(jTextField);
 
-
-        printCardValue(deck.getNewCardValue());
+        int cardValue = deck.getNewCardValue();
+        player1.setPoints(cardValue);
+        printCardValue(cardValue);
     }
 
-    public void printCardValue(int casualNumber){
+    /**
+     * creates a text field and adds the card value drew
+     * @param cardValue value of the card drew that has to be printed
+     */
+    public void printCardValue(int cardValue){
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-        String string = " " + casualNumber;
+        String string = "Ho pescato " + cardValue;
 
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
@@ -82,7 +88,7 @@ class FrameInterface implements ActionListener {
         jTextField.setFont(font);
 
         int textWidth = 11 * string.length();
-        jTextField.setBounds(130, frameMargin, textWidth, 40);
+        jTextField.setBounds(130, 0, textWidth, 40);
         frame.add(jTextField);
     }
 
