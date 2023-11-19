@@ -69,10 +69,10 @@ class FrameInterface implements ActionListener {
         // PLAYER 1 first card value
         cardValue = deck.getNewCardValue();
         player1.addPoints(cardValue);
-        printValue(cardValue, 130, frameMargin);
+        printValue(cardValue, 120, frameMargin);
 
         // PLAYER 1  "+"
-        createTextField("+", 160, frameMargin, false);
+        createTextField("+", 150, frameMargin, false);
 
         // PLAYER 1 second card value
         cardValue = deck.getNewCardValue();
@@ -80,21 +80,21 @@ class FrameInterface implements ActionListener {
         printValue(cardValue, 180, frameMargin);
 
         // PLAYER 1  "="
-        createTextField("=", 210, frameMargin, false);
+        createTextField("=", 230, frameMargin, false);
 
         // PLAYER 1  total points
-        printValue(player1.getPoints(), 240, frameMargin);
+        printValue(player1.getPoints(), 250, frameMargin);
 
         // PLAYER 2 label --------------------
-        createTextField("Player 1:", frameMargin, frameMargin, true);
+        createTextField("Player 2:", frameMargin, frameMargin + 40, true);
 
         // PLAYER 2 first card value
         cardValue = deck.getNewCardValue();
         player2.addPoints(cardValue);
-        printValue(cardValue, 130, frameMargin + 40);
+        printValue(cardValue, 120, frameMargin + 40);
 
         // PLAYER 2  "+"
-        createTextField("+", 160, frameMargin, false);
+        createTextField("+", 150, frameMargin + 40, false);
 
         // PLAYER 2 second card value
         cardValue = deck.getNewCardValue();
@@ -102,10 +102,10 @@ class FrameInterface implements ActionListener {
         printValue(cardValue, 180, frameMargin + 40);
 
         // PLAYER 2  "="
-        createTextField("=", 210, frameMargin + 40, false);
+        createTextField("=", 230, frameMargin + 40, false);
 
         // PLAYER 2  total points
-        printValue(player2.getPoints(), 240, frameMargin);
+        printValue(player2.getPoints(), 250, frameMargin + 40);
 
     }
 
@@ -138,7 +138,8 @@ class FrameInterface implements ActionListener {
         jTextField.setEditable(false);
         jTextField.setText(string);
         if(bold) jTextField.setFont(new Font("Tahoma", Font.BOLD, 14));
-        jTextField.setBounds(x, y, string.length() * 9, 40);
+        if(string.length() > 1) jTextField.setBounds(x, y, string.length() * 9, 40);
+        else jTextField.setBounds(x, y, 20, 40);
         frame.add(jTextField);
     }
 
