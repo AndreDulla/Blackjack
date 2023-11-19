@@ -69,8 +69,7 @@ class FrameInterface implements ActionListener {
         // PLAYER 1 first card value
         cardValue = deck.getNewCardValue();
         player1.addPoints(cardValue);
-        System.out.println("Player 1 points: " + player1.getPoints());
-        printCardValue(cardValue, 130, frameMargin);
+        printValue(cardValue, 130, frameMargin);
 
         // PLAYER 1  "+"
         JTextField jTextField2 = new JTextField();
@@ -82,22 +81,13 @@ class FrameInterface implements ActionListener {
         // PLAYER 1 second card value
         cardValue = deck.getNewCardValue();
         player1.addPoints(cardValue);
-        System.out.println("Player 1 points: " + player1.getPoints());
-        printCardValue(cardValue, 180, frameMargin);
+        printValue(cardValue, 180, frameMargin);
 
         // PLAYER 1  "="
-        JTextField jTextField3 = new JTextField();
-        jTextField3.setEditable(false);
-        jTextField3.setText("=");
-        jTextField3.setBounds(210, frameMargin, 20, 40);
-        frame.add(jTextField3);
+        createTextField("=", 210, frameMargin, false);
 
         // PLAYER 1  total points
-        JTextField jTextField4 = new JTextField();
-        jTextField4.setEditable(false);
-        jTextField4.setText(" " + player1.getPoints());
-        jTextField4.setBounds(240, frameMargin, 40, 40);
-        frame.add(jTextField4);
+        printValue(player1.getPoints(), 240, frameMargin);
 
     }
 
@@ -105,7 +95,7 @@ class FrameInterface implements ActionListener {
      * creates a text field and adds the card value drew
      * @param cardValue value of the card drew that has to be printed
      */
-    public void printCardValue(int cardValue, int x, int y){
+    public void printValue(int cardValue, int x, int y){
         String string = " " + cardValue;
 
         JTextField jTextField = new JTextField();

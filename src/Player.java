@@ -9,7 +9,7 @@ public class Player{
         points = 0;
     }
 
-    public void setPoints(int pointsToAdd){
+    public void addPoints(int pointsToAdd){
         points += pointsToAdd;
     }
 
