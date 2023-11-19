@@ -2,10 +2,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
+import java.awt.font.*;
 
 
 class FrameInterface implements ActionListener {
@@ -55,10 +52,28 @@ class FrameInterface implements ActionListener {
 
     public void setGamingGUI() {
         // GUI where the game happens
+        Deck deck = new Deck();
+
         JTextField jTextField = new JTextField();
         jTextField.setEditable(false);
         jTextField.setText("Pesco la carta...");
-        jTextField.setBounds(0, 0, 200, 40);
+        jTextField.setBounds(0, 0, 110, 40);
+        frame.add(jTextField);
+
+        printCardValue(deck.getNewCardValue());
+    }
+
+    public void printCardValue(int casualNumber){
+        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 15);
+        String string = "Ho pescato " + casualNumber;
+
+        JTextField jTextField = new JTextField();
+        jTextField.setEditable(false);
+        jTextField.setText(string);
+        jTextField.setFont(font);
+
+        int textWidth = 11 * string.length();
+        jTextField.setBounds(130, 0, textWidth, 40);
         frame.add(jTextField);
     }
 
