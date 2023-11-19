@@ -63,7 +63,7 @@ class FrameInterface implements ActionListener {
         Player player2 = new Player();
         int cardValue;
 
-        // PLAYER 1 label
+        // PLAYER 1 label --------------------
         createTextField("Player 1:", frameMargin, frameMargin, true);
 
         // PLAYER 1 first card value
@@ -72,11 +72,7 @@ class FrameInterface implements ActionListener {
         printValue(cardValue, 130, frameMargin);
 
         // PLAYER 1  "+"
-        JTextField jTextField2 = new JTextField();
-        jTextField2.setEditable(false);
-        jTextField2.setText("+");
-        jTextField2.setBounds(160, frameMargin, 20, 40);
-        frame.add(jTextField2);
+        createTextField("+", 160, frameMargin, false);
 
         // PLAYER 1 second card value
         cardValue = deck.getNewCardValue();
@@ -88,6 +84,28 @@ class FrameInterface implements ActionListener {
 
         // PLAYER 1  total points
         printValue(player1.getPoints(), 240, frameMargin);
+
+        // PLAYER 2 label --------------------
+        createTextField("Player 1:", frameMargin, frameMargin, true);
+
+        // PLAYER 2 first card value
+        cardValue = deck.getNewCardValue();
+        player2.addPoints(cardValue);
+        printValue(cardValue, 130, frameMargin + 40);
+
+        // PLAYER 2  "+"
+        createTextField("+", 160, frameMargin, false);
+
+        // PLAYER 2 second card value
+        cardValue = deck.getNewCardValue();
+        player2.addPoints(cardValue);
+        printValue(cardValue, 180, frameMargin + 40);
+
+        // PLAYER 2  "="
+        createTextField("=", 210, frameMargin + 40, false);
+
+        // PLAYER 2  total points
+        printValue(player2.getPoints(), 240, frameMargin);
 
     }
 
