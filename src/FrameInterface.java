@@ -2,7 +2,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.font.*;
 
 
 class FrameInterface implements ActionListener {
@@ -62,16 +61,44 @@ class FrameInterface implements ActionListener {
         Deck deck = new Deck();
         Player player1 = new Player();
         Player player2 = new Player();
+        int cardValue;
 
-        JTextField jTextField = new JTextField();
-        jTextField.setEditable(false);
-        jTextField.setText("Pesco la carta...");
-        jTextField.setBounds(0, 0, 110, 40);
-        frame.add(jTextField);
+        // PLAYER 1 label
+        createTextField("Player 1:", frameMargin, frameMargin, true);
 
-        int cardValue = deck.getNewCardValue();
-        player1.setPoints(cardValue);
-        printCardValue(cardValue);
+        // PLAYER 1 first card value
+        cardValue = deck.getNewCardValue();
+        player1.addPoints(cardValue);
+        System.out.println("Player 1 points: " + player1.getPoints());
+        printCardValue(cardValue, 130, frameMargin);
+
+        // PLAYER 1  "+"
+        JTextField jTextField2 = new JTextField();
+        jTextField2.setEditable(false);
+        jTextField2.setText("+");
+        jTextField2.setBounds(160, frameMargin, 20, 40);
+        frame.add(jTextField2);
+
+        // PLAYER 1 second card value
+        cardValue = deck.getNewCardValue();
+        player1.addPoints(cardValue);
+        System.out.println("Player 1 points: " + player1.getPoints());
+        printCardValue(cardValue, 180, frameMargin);
+
+        // PLAYER 1  "="
+        JTextField jTextField3 = new JTextField();
+        jTextField3.setEditable(false);
+        jTextField3.setText("=");
+        jTextField3.setBounds(210, frameMargin, 20, 40);
+        frame.add(jTextField3);
+
+        // PLAYER 1  total points
+        JTextField jTextField4 = new JTextField();
+        jTextField4.setEditable(false);
+        jTextField4.setText(" " + player1.getPoints());
+        jTextField4.setBounds(240, frameMargin, 40, 40);
+        frame.add(jTextField4);
+
     }
 
     /**
@@ -88,6 +115,22 @@ class FrameInterface implements ActionListener {
 
         int textWidth = 11 * string.length();
         jTextField.setBounds(x, y, textWidth, 40);
+        frame.add(jTextField);
+    }
+
+    /**
+     * Creates a text field
+     * @param string label of the field
+     * @param x position x
+     * @param y position y
+     * @param bold true -> bold text
+     */
+    public void createTextField(String string, int x, int y, boolean bold){
+        JTextField jTextField = new JTextField();
+        jTextField.setEditable(false);
+        jTextField.setText(string);
+        if(bold) jTextField.setFont(new Font("Tahoma", Font.BOLD, 14));
+        jTextField.setBounds(x, y, string.length() * 9, 40);
         frame.add(jTextField);
     }
 
