@@ -61,6 +61,7 @@ class FrameInterface implements ActionListener {
         Deck deck = new Deck();
         Player player1 = new Player();
         Player player2 = new Player();
+        Player dealer = new Player();
         int cardValue;
 
         // PLAYER 1 label --------------------
@@ -107,6 +108,27 @@ class FrameInterface implements ActionListener {
         // PLAYER 2  total points
         printValue(player2.getPoints(), 250, frameMargin + 40);
 
+        // DEALER label --------------------
+        createTextField("Dealer:", frameWidth / 2 - 30, frameMargin + 90, true);
+
+        // DEALER first card value
+        cardValue = deck.getNewCardValue();
+        dealer.addPoints(cardValue);
+        printValue(cardValue, frameWidth / 2 - 40, frameMargin + 120);
+
+        // DEALER "+"
+        createTextField("+", frameWidth / 2 - 10, frameMargin + 120, false);
+
+        // DEALER second card value
+        cardValue = deck.getNewCardValue();
+        dealer.addPoints(cardValue);
+        printValue(cardValue, frameWidth / 2 + 20, frameMargin + 120);
+
+        // DEALER "="
+        createTextField("=", frameWidth / 2 - 20, frameMargin + 150, false);
+
+        // DEALER total points
+        printValue(dealer.getPoints(), frameWidth / 2, frameMargin + 150);
     }
 
     /**
